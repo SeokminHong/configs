@@ -31,6 +31,7 @@ export const extendedRules = [
  */
 export const jsOnlyRules = [
   ['array-callback-return', { checkForEach: true, allowVoid: true }],
+  'constructor-super',
   'getter-return',
   'no-class-assign',
   'no-const-assign',
@@ -70,7 +71,6 @@ export const tsOnlyRules = [
  */
 export const baseRules = [
   ...extendedRules.map(addPrefix),
-  'constructor-super',
   'for-direction',
   'no-async-promise-executor',
   'no-await-in-loop',

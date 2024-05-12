@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 import {
   addPrefix,
   baseRules,
-  extendedRules,
+  extendedTypedRules,
   jsOnlyRules,
   tsOnlyRules,
 } from './rules/base.js';
@@ -62,8 +62,8 @@ export default function config(options = {}) {
       },
       files: jsExtensions,
       rules: {
-        ...rules(extendedRules.map(addPrefix), 'off'),
-        ...rules(extendedRules, level),
+        ...rules(extendedTypedRules.map(addPrefix), 'off'),
+        ...rules(extendedTypedRules, level),
         ...rules(jsOnlyRules, level),
       },
     },

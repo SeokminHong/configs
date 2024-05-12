@@ -1,4 +1,4 @@
-import eslint from './utils/eslint';
+import eslint from './utils/eslint.js';
 
 eslint('no-compare-neg-zero', [
   {

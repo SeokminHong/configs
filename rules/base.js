@@ -166,7 +166,7 @@ export const baseRules = [
   'no-octal-escape',
   'no-param-reassign',
   ['no-plusplus', { allowForLoopAfterthoughts: true }],
-  'no-promise-executor-return',
+  ['no-promise-executor-return', { allowVoid: true }],
   'no-prototype-builtins',
   'no-regex-spaces',
   'no-return-assign',

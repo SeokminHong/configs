@@ -1,10 +1,24 @@
-for (var i = 0; i < 10; i--) {}
+for (let i = 0; i < 10; i--) {
+  foo(i);
+}
 
-for (var i = 10; i >= 0; i++) {}
+for (let i = 10; i >= 0; i++) {
+  foo(i);
+}
 
-for (var i = 0; i > 10; i++) {}
+for (let i = 0; i > 10; i++) {
+  foo(i);
+}
 
-for (var i = 0; 10 > i; i--) {}
+for (let i = 0; i < 10; i--) {
+  foo(i);
+}
 
 const n = -2;
-for (let i = 0; i < 10; i += n) {}
+for (let i = 0; i < 10; i += n) {
+  foo(i);
+}
+
+function foo(v: number) {
+  return v;
+}

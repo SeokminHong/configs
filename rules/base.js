@@ -106,6 +106,7 @@ export const tsOnlyRules = [
  */
 export const baseRules = [
   ...extendedTypedRules.map(addPrefix),
+  ...extendedRules.map(addPrefix),
   'accessor-pairs',
   'arrow-body-style',
   'curly',
@@ -214,7 +215,6 @@ export const baseRules = [
   'require-yield',
   'symbol-description',
   ['yoda', 'never', { exceptRange: true }],
-  ...extendedRules.map(addPrefix),
 ];
 
 /**

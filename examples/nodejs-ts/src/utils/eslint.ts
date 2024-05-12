@@ -1,15 +1,14 @@
 import type { Linter } from 'eslint';
 import { ESLint } from 'eslint';
-import { expect } from 'vitest';
+import { expect, it } from 'vitest';
 
-const eslint = new ESLint();
+const linter = new ESLint();
 
-export default async function lint(
-  rule: string,
-  fixtures: Linter.LintMessage[],
-) {
-  const results = await eslint.lintFiles(`src/${rule}.ts`);
-  expect(results.length).toEqual(1);
+export default function eslint(rule: string, fixtures: Linter.LintMessage[]) {
+  it(rule, async () => {
+    const results = await linter.lintFiles(`src/${rule}.ts`);
+    expect(results.length).toEqual(1);
 
-  expect(fixtures).toMatchObject(results[0]?.messages ?? {});
+    expect(fixtures).toMatchObject(results[0]?.messages ?? {});
+  });
 }

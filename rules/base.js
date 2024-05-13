@@ -40,6 +40,7 @@ const extendedRules = [
     { allow: ['arrowFunctions', 'constructors', 'decoratedFunctions'] },
   ],
   'no-loop-func',
+  'no-loss-of-precision',
   [
     'no-shadow',
     {
@@ -153,7 +154,6 @@ export const baseRules = [
   'no-labels',
   'no-lone-blocks',
   'no-lonely-if',
-  'no-loss-of-precision',
   'no-misleading-character-class',
   'no-multi-str',
   'no-negated-condition',

@@ -194,8 +194,8 @@ export const tsOnlyRules = [
  * @type {RuleDef[]}
  */
 export const baseRules = [
-  ...extendedTypedRules.map(addPrefix),
-  ...extendedRules.map(addPrefix),
+  ...extendedTypedRules.map(addTypeScriptPrefix),
+  ...extendedRules.map(addTypeScriptPrefix),
   'accessor-pairs',
   'arrow-body-style',
   'curly',
@@ -309,7 +309,7 @@ export const baseRules = [
  * @param {RuleDef} ruleDef
  * @returns {RuleDef}
  */
-export function addPrefix(ruleDef) {
+export function addTypeScriptPrefix(ruleDef) {
   return typeof ruleDef === 'string'
     ? `@typescript-eslint/${ruleDef}`
     : [`@typescript-eslint/${ruleDef[0]}`, ...ruleDef.slice(1)];

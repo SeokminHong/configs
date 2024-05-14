@@ -5,7 +5,7 @@ import typescriptParser from '@typescript-eslint/parser';
 import tseslint from 'typescript-eslint';
 
 import {
-  addPrefix,
+  addTypeScriptPrefix,
   baseRules,
   extendedTypedRules,
   jsOnlyRules,
@@ -17,7 +17,9 @@ import rules from './utils/rules.js';
  * @typedef {{
  *   level?: import('./types').RuleLevel,
  *   parserOptions?: import('./types').ParserOptions,
- *   configs?: import('./types').Config[]
+ *   configs?: import('./types').Config[],
+ *   fullMode?: boolean,
+ *   fullModeOnlyRules?: string[]
  * }} Options
  */
 
@@ -33,7 +35,15 @@ export default function config(options = {}) {
     level = 'error',
     parserOptions = { project: true },
     configs = [],
+    fullMode = false,
+    fullModeOnlyRules = [],
   } = options;
+
+  const rulesOptions = {
+    level,
+    fullMode,
+    fullModeOnlyRules,
+  };
 
   return tseslint.config(
     {
@@ -45,12 +55,12 @@ export default function config(options = {}) {
       plugins: {
         '@typescript-eslint': typescriptPlugin,
       },
-      rules: rules(baseRules, level),
+      rules: rules(baseRules, rulesOptions),
     },
     /** TS */
     {
       files: tsExtensions,
-      rules: rules(tsOnlyRules, level),
+      rules: rules(tsOnlyRules, rulesOptions),
     },
     /** JS */
     {
@@ -62,9 +72,12 @@ export default function config(options = {}) {
       },
       files: jsExtensions,
       rules: {
-        ...rules(extendedTypedRules.map(addPrefix), 'off'),
-        ...rules(extendedTypedRules, level),
-        ...rules(jsOnlyRules, level),
+        ...rules(extendedTypedRules.map(addTypeScriptPrefix), {
+          ...rulesOptions,
+          level: 'off',
+        }),
+        ...rules(extendedTypedRules, rulesOptions),
+        ...rules(jsOnlyRules, rulesOptions),
       },
     },
     ...configs,

@@ -21,13 +21,19 @@
   "files": [
     "tsconfig",
     "eslint",
-    "prettier.js"
+    "prettier.js",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "eslint"
+    "eslint",
+    "typescript",
+    "tsconfig",
+    "prettier",
+    "configs"
   ],
   "author": "Seokmin Hong",
   "license": "MIT",

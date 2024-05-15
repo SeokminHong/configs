@@ -15,7 +15,7 @@ importers:
         specifier: ^7.8.0
         version: 7.8.0(eslint@8.57.0)(typescript@5.4.5)
       eslint:
-        specifier: '>=8.57.0, <9'
+        specifier: ^8.57.0, <9
         version: 8.57.0
       eslint-plugin-import:
         specifier: ^2.29.1

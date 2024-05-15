@@ -5,8 +5,8 @@
 ### 1. Install the package
 
 ```sh
-npm install @seokminhong/configs
-npm install eslint@^8 # If needed
+npm install -D @seokminhong/configs eslint@^8.57.0
+npm install -D prettier # If needed
 ```
 
 ### 2. Set the configs

@@ -20,6 +20,7 @@ import rules from './utils/rules.js';
  *   parserOptions?: import('./types').ParserOptions,
  *   ignoredRules?: string[],
  *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
+ *   extensions?: import('./types').Extension[]
  * }} Options
  */
 
@@ -36,6 +37,7 @@ export default function config(options = {}) {
     parserOptions = { project: true },
     ignoredRules = [],
     restrictedSyntaxes = [],
+    extensions = [],
   } = options;
 
   const rulesOptions = {
@@ -94,5 +96,6 @@ export default function config(options = {}) {
         ...rules(jsOnlyRules, rulesOptions),
       },
     },
+    ...extensions.flatMap((extension) => extension(rulesOptions)),
   );
 }

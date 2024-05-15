@@ -9,7 +9,7 @@
       "default": "./eslint/index.js"
     },
     "./eslint/*": {
-      "default": "./eslint/rules/*.js"
+      "default": "./eslint/extensions/*.js"
     },
     "./prettier": {
       "default": "./prettier.js"

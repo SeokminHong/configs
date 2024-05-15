@@ -6,9 +6,7 @@
 
 /**
  * @param {import('../types').RuleDef[]} ruleDefs
- * @param {Object} option
- * @param {import('../types').RuleLevel} option.level
- * @param {Set<string>} option.ignoredRules
+ * @param {import('../types').RulesOptions} option
  * @returns {Record<string, import('../types').RuleEntry>}
  */
 export default function rules(ruleDefs, { level, ignoredRules }) {

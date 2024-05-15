@@ -5,6 +5,7 @@ import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 
 import { jsExtensions } from '../utils/extensions.js';
 import rules from '../utils/rules.js';
+
 import jsx from './jsx.js';
 
 /**

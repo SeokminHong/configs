@@ -1,8 +1,10 @@
 import config from './eslint/index.js';
 
-export default [
+const defaultConfig = [
   ...config(),
   {
     ignores: ['node_modules', 'examples'],
   },
 ];
+
+export default defaultConfig;

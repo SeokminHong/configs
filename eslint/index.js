@@ -18,8 +18,7 @@ import rules from './utils/rules.js';
  * @typedef {{
  *   level?: import('./types').RuleLevel,
  *   parserOptions?: import('./types').ParserOptions,
- *   fullMode?: boolean,
- *   fullModeOnlyRules?: string[],
+ *   ignoredRules?: string[],
  *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
  * }} Options
  */
@@ -35,15 +34,13 @@ export default function config(options = {}) {
   const {
     level = 'error',
     parserOptions = { project: true },
-    fullMode = false,
-    fullModeOnlyRules = [],
+    ignoredRules = [],
     restrictedSyntaxes = [],
   } = options;
 
   const rulesOptions = {
     level,
-    fullMode,
-    fullModeOnlyRules: new Set(fullModeOnlyRules),
+    ignoredRules: new Set(ignoredRules),
   };
 
   return tseslint.config(

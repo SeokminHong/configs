@@ -115,7 +115,6 @@ export const tsOnlyRules = [
       accessibility: 'no-public',
     },
   ],
-  '@typescript-eslint/explicit-module-boundary-types',
   '@typescript-eslint/method-signature-style',
   '@typescript-eslint/no-array-delete',
   '@typescript-eslint/no-base-to-string',

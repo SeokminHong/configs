@@ -10,8 +10,16 @@
     },
     "./prettier": {
       "default": "./prettier.js"
+    },
+    "./tsconfig/*": {
+      "default": "./tsconfig/*.json"
     }
   },
+  "files": [
+    "tsconfig",
+    "eslint",
+    "prettier.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

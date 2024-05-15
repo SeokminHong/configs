@@ -1,18 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "resolveJsonModule": true,
-    "declaration": true,
-    "outDir": "dist",
-    "newLine": "lf",
-    "verbatimModuleSyntax": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true
-  },
+  "extends": "@seokminhong/configs/tsconfig/node",
   "include": ["src/**/*.ts"]
 }

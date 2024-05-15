@@ -4,12 +4,13 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 
 import {
-  commonRuleDefs,
-  jsOnlyRuleDefs,
+  reactCommonRuleDefs,
+  reactJsOnlyRuleDefs,
   reactRefreshRuleDefs,
 } from '../rules/react.js';
 import { jsExtensions } from '../utils/extensions.js';
 import rules from '../utils/rules.js';
+import jsx from './jsx.js';
 
 /**
  * @typedef {{
@@ -35,14 +36,15 @@ export default function react(options = {}) {
         'react-hooks': reactHooksPlugin,
         'react-refresh': reactRefreshPlugin,
       },
-      rules: rules(commonRuleDefs, rulesOptions),
+      rules: rules(reactCommonRuleDefs, rulesOptions),
     },
     {
       files: jsExtensions,
-      rules: rules(jsOnlyRuleDefs, rulesOptions),
+      rules: rules(reactJsOnlyRuleDefs, rulesOptions),
     },
     {
       rules: rules(reactRefreshRuleDefs(supportsConstantExport), rulesOptions),
     },
+    ...jsx()(rulesOptions),
   ];
 }

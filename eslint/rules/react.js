@@ -2,7 +2,7 @@
  * Rules for JavaScript
  * @type {import('../types').RuleDef[]}
  */
-export const commonRuleDefs = [
+export const reactCommonRuleDefs = [
   'react/button-has-type',
   [
     'react/destructuring-assignment',
@@ -66,7 +66,7 @@ export const commonRuleDefs = [
 /**
  * @type {import('../types').RuleDef[]}
  */
-export const jsOnlyRuleDefs = [
+export const reactJsOnlyRuleDefs = [
   'react/jsx-no-duplicate-props',
   'react/no-unknown-property',
 ];

@@ -2,6 +2,7 @@
 
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import * as importPlugin from 'eslint-plugin-import';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import tseslint from 'typescript-eslint';
 
@@ -55,8 +56,13 @@ export default function config(options = {}) {
       plugins: {
         '@typescript-eslint': typescriptPlugin,
         unicorn: unicornPlugin,
+        import: importPlugin,
       },
       rules: rules(baseRules, rulesOptions),
+      settings: {
+        'import/extensions': jsExtensions,
+        '@typescript-eslint/parser': tsExtensions,
+      },
     },
     {
       rules: {

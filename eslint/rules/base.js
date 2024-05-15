@@ -91,6 +91,9 @@ export const jsOnlyRules = [
   ['no-use-before-define', { functions: false, classes: false }],
   'use-isnan',
   'valid-typeof',
+  'import/default',
+  'import/export',
+  ['import/extensions', 'always'],
   'unicorn/no-static-only-class',
   'unicorn/no-unnecessary-await',
   'unicorn/prefer-top-level-await',
@@ -201,6 +204,7 @@ export const tsOnlyRules = [
   '@typescript-eslint/unbound-method',
   '@typescript-eslint/unified-signatures',
   '@typescript-eslint/use-unknown-in-catch-callback-variable',
+  ['import/consistent-type-specifier-style', 'prefer-top-level'],
 ];
 
 /**
@@ -313,6 +317,30 @@ export const baseRules = [
   'require-yield',
   'symbol-description',
   ['yoda', 'never', { exceptRange: true }],
+  'import/no-deprecated',
+  ['import/no-duplicates', { considerQueryString: true }],
+  'import/no-empty-named-blocks',
+  'import/first',
+  'import/newline-after-import',
+  'import/no-anonymous-default-export',
+  'import/no-mutable-exports',
+  'import/no-named-as-default',
+  'import/no-named-as-default-member',
+  'import/no-relative-packages',
+  'import/no-self-import',
+  'import/no-useless-path-segments',
+  [
+    'import/order',
+    {
+      alphabetize: {
+        order: 'asc',
+        orderImportKind: 'asc',
+        caseInsensitive: true,
+      },
+      'newlines-between': 'always',
+    },
+  ],
+  'import/prefer-default-export',
   'unicorn/better-regex',
   'unicorn/catch-error-name',
   'unicorn/consistent-destructuring',

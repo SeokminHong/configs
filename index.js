@@ -2,6 +2,7 @@
 
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import unicornPlugin from 'eslint-plugin-unicorn';
 import tseslint from 'typescript-eslint';
 
 import {
@@ -42,7 +43,7 @@ export default function config(options = {}) {
   const rulesOptions = {
     level,
     fullMode,
-    fullModeOnlyRules,
+    fullModeOnlyRules: new Set(fullModeOnlyRules),
   };
 
   return tseslint.config(
@@ -54,6 +55,7 @@ export default function config(options = {}) {
       files: [...jsExtensions, ...tsExtensions],
       plugins: {
         '@typescript-eslint': typescriptPlugin,
+        unicorn: unicornPlugin,
       },
       rules: rules(baseRules, rulesOptions),
     },
@@ -72,10 +74,13 @@ export default function config(options = {}) {
       },
       files: jsExtensions,
       rules: {
-        ...rules(extendedTypedRules.map(addTypeScriptPrefix), {
-          ...rulesOptions,
-          level: 'off',
-        }),
+        ...rules(
+          extendedTypedRules.map((ruleDef) => addTypeScriptPrefix(ruleDef)),
+          {
+            ...rulesOptions,
+            level: 'off',
+          },
+        ),
         ...rules(extendedTypedRules, rulesOptions),
         ...rules(jsOnlyRules, rulesOptions),
       },

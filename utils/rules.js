@@ -9,7 +9,7 @@
  * @param {Object} option
  * @param {import('../types').RuleLevel} option.level
  * @param {boolean} option.fullMode
- * @param {string[]} option.fullModeOnlyRules
+ * @param {Set<string>} option.fullModeOnlyRules
  * @returns {Record<string, import('../types').RuleEntry>}
  */
 export default function rules(
@@ -36,6 +36,6 @@ export default function rules(
   return Object.fromEntries(
     fullMode
       ? ruleEntries
-      : ruleEntries.filter(([ruleDef]) => !fullModeOnlyRules.includes(ruleDef)),
+      : ruleEntries.filter(([ruleDef]) => !fullModeOnlyRules.has(ruleDef)),
   );
 }

@@ -46,3 +46,17 @@ export default config({
   "extends": ["@seokminhong/config/tsconfig/node"],
 }
 ```
+
+## TODO
+
+- [ ] Provides Node.js ESLint rules
+- [ ] Provides testing ESLint rules
+- [ ] Supports Deno
+
+## References
+
+- [TSConfig Bases](https://github.com/tsconfig/bases?)
+- [ESLint Flat Config](https://eslint.org/docs/v8.x/use/configure/configuration-files-new)
+- [TypeScript ESLint Config](https://typescript-eslint.io/getting-started/typed-linting)
+- [eslint-plugin-hardcore](https://github.com/EvgenyOrekhov/eslint-config-hardcore/)
+- [Prettier Configuration](https://prettier.io/docs/en/configuration.html)

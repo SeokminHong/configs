@@ -18,7 +18,6 @@ import rules from './utils/rules.js';
  * @typedef {{
  *   level?: import('./types').RuleLevel,
  *   parserOptions?: import('./types').ParserOptions,
- *   configs?: import('./types').Config[],
  *   fullMode?: boolean,
  *   fullModeOnlyRules?: string[],
  *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
@@ -36,7 +35,6 @@ export default function config(options = {}) {
   const {
     level = 'error',
     parserOptions = { project: true },
-    configs = [],
     fullMode = false,
     fullModeOnlyRules = [],
     restrictedSyntaxes = [],
@@ -99,6 +97,5 @@ export default function config(options = {}) {
         ...rules(jsOnlyRules, rulesOptions),
       },
     },
-    ...configs,
   );
 }

@@ -1,9 +1,8 @@
-import config from './index.js';
+import config from './eslint/index.js';
 
-export default config({
-  configs: [
-    {
-      ignores: ['node_modules', 'examples'],
-    },
-  ],
-});
+export default [
+  ...config(),
+  {
+    ignores: ['node_modules', 'examples'],
+  },
+];

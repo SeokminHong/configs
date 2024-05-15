@@ -20,7 +20,8 @@ import rules from './utils/rules.js';
  *   parserOptions?: import('./types').ParserOptions,
  *   configs?: import('./types').Config[],
  *   fullMode?: boolean,
- *   fullModeOnlyRules?: string[]
+ *   fullModeOnlyRules?: string[],
+ *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
  * }} Options
  */
 
@@ -38,6 +39,7 @@ export default function config(options = {}) {
     configs = [],
     fullMode = false,
     fullModeOnlyRules = [],
+    restrictedSyntaxes = [],
   } = options;
 
   const rulesOptions = {
@@ -58,6 +60,18 @@ export default function config(options = {}) {
         unicorn: unicornPlugin,
       },
       rules: rules(baseRules, rulesOptions),
+    },
+    {
+      rules: {
+        'no-restricted-syntax': [
+          level,
+          {
+            selector: 'ExportAllDeclaration',
+            message: 'Export only modules you need.',
+          },
+          ...restrictedSyntaxes,
+        ],
+      },
     },
     /** TS */
     {

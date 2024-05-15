@@ -6,6 +6,8 @@
  * @typedef {import('@typescript-eslint/utils').TSESLint.SharedConfig.RuleEntry} RuleEntry
  * @typedef {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config} Config
  * @typedef {import('@typescript-eslint/types').ParserOptions} ParserOptions
+ *
+ * @typedef {string | {selector: string, message: string}} RestrictSyntax
  */
 
 export {};

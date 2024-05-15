@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@seokminhong/configs':
         specifier: file:///../..
-        version: file:../..(eslint@9.2.0)(typescript@5.4.5)
+        version: file:../..(eslint@9.2.0)(prettier@3.2.5)(typescript@5.4.5)
       '@types/eslint':
         specifier: ^8.56.10
         version: 8.56.10
@@ -20,6 +20,9 @@ importers:
       eslint:
         specifier: ^9.2.0
         version: 9.2.0
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -315,6 +318,12 @@ packages:
     resolution: {directory: ../.., type: directory}
     peerDependencies:
       eslint: ^9.2.0
+      prettier: ^3.2.5
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+      prettier:
+        optional: true
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -975,6 +984,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
+  prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   pretty-format@29.7.0:
     resolution: {integrity: sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1447,13 +1461,15 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.17.2':
     optional: true
 
-  '@seokminhong/configs@file:../..(eslint@9.2.0)(typescript@5.4.5)':
+  '@seokminhong/configs@file:../..(eslint@9.2.0)(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 7.8.0(@typescript-eslint/parser@7.8.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 7.8.0(eslint@9.2.0)(typescript@5.4.5)
-      eslint: 9.2.0
       eslint-plugin-unicorn: 53.0.0(eslint@9.2.0)
       typescript-eslint: 7.8.0(eslint@9.2.0)(typescript@5.4.5)
+    optionalDependencies:
+      eslint: 9.2.0
+      prettier: 3.2.5
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2172,6 +2188,8 @@ snapshots:
       source-map-js: 1.2.0
 
   prelude-ls@1.2.1: {}
+
+  prettier@3.2.5: {}
 
   pretty-format@29.7.0:
     dependencies:

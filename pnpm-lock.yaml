@@ -20,13 +20,12 @@ importers:
       eslint-plugin-unicorn:
         specifier: ^53.0.0
         version: 53.0.0(eslint@9.2.0)
-      typescript-eslint:
-        specifier: ^7.8.0
-        version: 7.8.0(eslint@9.2.0)(typescript@5.4.5)
-    devDependencies:
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
+      typescript-eslint:
+        specifier: ^7.8.0
+        version: 7.8.0(eslint@9.2.0)(typescript@5.4.5)
 
 packages:
 

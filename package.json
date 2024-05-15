@@ -7,6 +7,9 @@
   "exports": {
     "./eslint": {
       "default": "./eslint/index.js"
+    },
+    "./prettier": {
+      "default": "./prettier.js"
     }
   },
   "scripts": {
@@ -24,10 +27,16 @@
     "typescript-eslint": "^7.8.0"
   },
   "peerDependencies": {
-    "eslint": "^9.2.0"
-  },
-  "packageManager": "pnpm@9.1.0",
-  "devDependencies": {
+    "eslint": "^9.2.0",
     "prettier": "^3.2.5"
-  }
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@9.1.0"
 }

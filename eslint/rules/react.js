@@ -58,6 +58,9 @@ export const commonRuleDefs = [
   'react/no-unescaped-entities',
   'react/no-unstable-nested-components',
   'react/void-dom-elements-no-children',
+
+  'react-hooks/rules-of-hooks',
+  'react-hooks/exhaustive-deps',
 ];
 
 /**
@@ -67,3 +70,15 @@ export const jsOnlyRuleDefs = [
   'react/jsx-no-duplicate-props',
   'react/no-unknown-property',
 ];
+
+/**
+ * @param {boolean} supportsConstantExport
+ * @returns {import('../types').RuleDef[]}
+ */
+export function reactRefreshRuleDefs(supportsConstantExport) {
+  return [
+    supportsConstantExport
+      ? ['react-refresh/only-export-components', { allowConstantExport: true }]
+      : 'react-refresh/only-export-components',
+  ];
+}

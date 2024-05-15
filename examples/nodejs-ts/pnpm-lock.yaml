@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      '@seokminhong/eslint':
+      '@seokminhong/configs':
         specifier: file:///../..
         version: file:../..(eslint@9.2.0)(typescript@5.4.5)
       '@types/eslint':
@@ -311,7 +311,7 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@seokminhong/eslint@file:../..':
+  '@seokminhong/configs@file:../..':
     resolution: {directory: ../.., type: directory}
     peerDependencies:
       eslint: ^9.2.0
@@ -1264,7 +1264,7 @@ snapshots:
   '@babel/code-frame@7.24.2':
     dependencies:
       '@babel/highlight': 7.24.5
-      picocolors: 1.0.0
+      picocolors: 1.0.1
 
   '@babel/helper-validator-identifier@7.24.5': {}
 
@@ -1273,7 +1273,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
 
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
@@ -1447,7 +1447,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.17.2':
     optional: true
 
-  '@seokminhong/eslint@file:../..(eslint@9.2.0)(typescript@5.4.5)':
+  '@seokminhong/configs@file:../..(eslint@9.2.0)(typescript@5.4.5)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 7.8.0(@typescript-eslint/parser@7.8.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 7.8.0(eslint@9.2.0)(typescript@5.4.5)

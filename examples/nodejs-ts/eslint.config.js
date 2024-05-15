@@ -1,4 +1,4 @@
-import config from '@seokminhong/eslint';
+import config from '@seokminhong/configs/eslint';
 
 export default [
   ...config({

@@ -3,7 +3,7 @@ import { it } from 'vitest';
 
 const eslint = new ESLint();
 
-export default function printFixtures(rule: string) {
+export default function printFixtures(rule: string): void {
   it(rule, async () => {
     const results = await eslint.lintFiles(`src/${rule}.ts`);
     if (results.length !== 1) {

@@ -17,14 +17,29 @@ import {
 import rules from './utils/rules.js';
 
 /**
- * @typedef {{
- *   level?: import('./types').RuleLevel,
- *   parserOptions?: import('./types').ParserOptions,
- *   ignoredRules?: string[],
- *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
- *   envs?: (keyof import('globals'))[]
- *   extensions?: import('./types').Extension[]
- * }} Options
+ * @typedef Options
+ * @type {Object}
+ * @property {import('./types').RuleLevel} [level]
+ * Level of severity. Default is `'error'`.
+ * @property {import('./types').ParserOptions} [parserOptions]
+ * `parserOptions` property for TypeScript ESLint plugin options. See {@link https://typescript-eslint.io/getting-started/typed-linting | TypeScript ESLint document}.
+ * @property {string[]} [ignoredRules]
+ * Rules to ignore. It's useful if you want to disable specific rules by environment because of performance.
+ * @property {import('./types').RestrictSyntax[]} [restrictedSyntaxes]
+ * Options for {@link https://eslint.org/docs/latest/rules/no-restricted-syntax | no-restricted-syntax} option.
+ * This config uses the rule for reporting `export * from '...'` syntax.
+ * When you want to add options, please add your options to this parameter.
+ * If you want to override the rule, add another flat config after the `config()`.
+ * ```
+ * export default [
+ *   ...config(),
+ *   { rules: {'no-restrict-syntax': ... }}
+ * ]
+ * ```
+ * @property {(keyof import('globals'))[]} [envs]
+ * Environments for ESLint. For React project, please use `['browser', 'node']`.
+ * @property {import('./types').Extension[]} [extensions]
+ * Extensions for specific codebase. Currently, `jsx` and `react` are supported.
  */
 
 const tsExtensions = ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'];

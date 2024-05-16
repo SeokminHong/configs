@@ -28,6 +28,7 @@ import config from '@seokminhong/configs/eslint';
 import react from '@seokminhong/configs/eslint/react';
 
 export default config({
+  envs: ['browser', 'node'],
   extensions: [react()],
 });
 ```
@@ -43,7 +44,7 @@ export default config({
 
 ```jsonc
 {
-  "extends": ["@seokminhong/config/tsconfig/node"],
+  "extends": "@seokminhong/config/tsconfig/node",
 }
 ```
 

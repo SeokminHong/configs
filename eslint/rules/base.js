@@ -93,7 +93,7 @@ export const jsOnlyRules = [
   'valid-typeof',
   'import/default',
   'import/export',
-  ['import/extensions', 'always'],
+  ['import/extensions', 'ignorePackages'],
   'unicorn/no-static-only-class',
   'unicorn/no-unnecessary-await',
   'unicorn/prefer-top-level-await',

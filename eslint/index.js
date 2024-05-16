@@ -4,6 +4,7 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import * as importPlugin from 'eslint-plugin-import';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 import {
@@ -21,6 +22,7 @@ import rules from './utils/rules.js';
  *   parserOptions?: import('./types').ParserOptions,
  *   ignoredRules?: string[],
  *   restrictedSyntaxes?: import('./types').RestrictSyntax[]
+ *   envs?: (keyof import('globals'))[]
  *   extensions?: import('./types').Extension[]
  * }} Options
  */
@@ -38,6 +40,7 @@ export default function config(options = {}) {
     parserOptions = { project: true },
     ignoredRules = [],
     restrictedSyntaxes = [],
+    envs = [],
     extensions = [],
   } = options;
 
@@ -51,6 +54,7 @@ export default function config(options = {}) {
       languageOptions: {
         parser: typescriptParser,
         parserOptions,
+        globals: Object.assign({}, ...envs.map((env) => globals[env])),
       },
       files: [...jsExtensions, ...tsExtensions],
       plugins: {

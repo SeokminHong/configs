@@ -2,7 +2,7 @@
 
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import * as importPlugin from 'eslint-plugin-import';
+import * as importPlugin from 'eslint-plugin-import-x';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';

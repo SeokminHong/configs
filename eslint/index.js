@@ -75,11 +75,11 @@ export default function config(options = {}) {
       plugins: {
         '@typescript-eslint': typescriptPlugin,
         unicorn: unicornPlugin,
-        import: importPlugin,
+        'import-x': importPlugin,
       },
       rules: rules(baseRules, rulesOptions),
       settings: {
-        'import/extensions': jsExtensions,
+        'import-x/extensions': jsExtensions,
         '@typescript-eslint/parser': tsExtensions,
       },
     },

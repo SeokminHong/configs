@@ -102,6 +102,7 @@ export default function react(options = {}) {
       },
       plugins: {
         react: reactPlugin,
+        // @ts-ignore
         'react-hooks': reactHooksPlugin,
         'react-refresh': reactRefreshPlugin,
       },

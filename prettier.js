@@ -3,7 +3,7 @@
 /**
  * @type {import('prettier').Config}
  */
-export default {
+const config = {
   arrowParens: 'always',
   endOfLine: 'lf',
   jsxSingleQuote: false,
@@ -18,7 +18,7 @@ export default {
     '<BUILTIN_MODULES>',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^\\.\\.',
+    String.raw`^\.\.`,
     '',
     '^[.]',
     '',
@@ -26,3 +26,5 @@ export default {
     '^/',
   ],
 };
+
+export default config;

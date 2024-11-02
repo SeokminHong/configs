@@ -255,7 +255,7 @@ export const baseRules = [
   ['no-extra-boolean-cast', { enforceForLogicalOperands: true }],
   [
     'no-fallthrough',
-    { allowEmptyCase: false, reportUnusedFallthroughComments: true },
+    { allowEmptyCase: false, reportUnusedFallthroughComment: true },
   ],
   ['no-implicit-coercion', { disallowTemplateShorthand: true }],
   'no-irregular-whitespace',

@@ -150,6 +150,7 @@ export const tsOnlyRules = [
     },
   ],
   '@typescript-eslint/no-unnecessary-qualifier',
+  '@typescript-eslint/no-unnecessary-template-expression',
   '@typescript-eslint/no-unnecessary-type-arguments',
   '@typescript-eslint/no-unnecessary-type-assertion',
   '@typescript-eslint/no-unnecessary-type-constraint',
@@ -161,7 +162,6 @@ export const tsOnlyRules = [
   '@typescript-eslint/no-unsafe-member-access',
   '@typescript-eslint/no-unsafe-return',
   '@typescript-eslint/no-useless-empty-export',
-  '@typescript-eslint/no-useless-template-literals',
   [
     '@typescript-eslint/no-use-before-define',
     { functions: false, classes: false, variables: false },

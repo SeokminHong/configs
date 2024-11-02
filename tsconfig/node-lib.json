@@ -4,7 +4,6 @@
   "compilerOptions": {
     "module": "NodeNext",
     "lib": ["es2022"],
-    "target": "es2021",
     "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true
   }

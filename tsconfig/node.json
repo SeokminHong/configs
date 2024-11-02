@@ -3,7 +3,6 @@
   "extends": "./base.json",
   "compilerOptions": {
     "module": "NodeNext",
-    "lib": ["es2022"],
-    "target": "es2021"
+    "lib": ["es2022"]
   }
 }

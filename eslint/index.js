@@ -107,8 +107,7 @@ export default function config(options = {}) {
     {
       languageOptions: {
         parserOptions: {
-          project: false,
-          program: null,
+          projectService: false,
         },
       },
       files: jsExtensions,

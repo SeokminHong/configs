@@ -2,7 +2,7 @@
   "name": "@seokminhong/configs",
   "version": "2.0.0",
   "type": "module",
-  "description": "",
+  "description": "All-in-one ESLint, TypeScript, and Prettier configurations",
   "main": "index.js",
   "exports": {
     "./eslint": {

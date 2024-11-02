@@ -329,18 +329,6 @@ export const baseRules = [
   'import-x/no-relative-packages',
   'import-x/no-self-import',
   'import-x/no-useless-path-segments',
-  [
-    'import-x/order',
-    {
-      alphabetize: {
-        order: 'asc',
-        orderImportKind: 'asc',
-        caseInsensitive: true,
-      },
-      'newlines-between': 'always',
-    },
-  ],
-  'import-x/prefer-default-export',
   'unicorn/better-regex',
   'unicorn/catch-error-name',
   'unicorn/consistent-destructuring',

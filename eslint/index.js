@@ -52,7 +52,10 @@ const jsExtensions = ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'];
 export default function config(options = {}) {
   const {
     level = 'error',
-    parserOptions = { project: true },
+    parserOptions = {
+      projectService: true,
+      tsconfigRootDir: import.meta.dirname,
+    },
     ignoredRules = [],
     restrictedSyntaxes = [],
     envs = [],

@@ -40,7 +40,7 @@
   "license": "MIT",
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.4.0",
-    "@typescript-eslint/eslint-plugin": "8.12.2",
+    "@typescript-eslint/eslint-plugin": "8.14.0",
     "@typescript-eslint/parser": "8.14.0",
     "eslint-plugin-import-x": "4.4.0",
     "eslint-plugin-jsx-a11y": "6.10.2",

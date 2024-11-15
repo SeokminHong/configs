@@ -18,6 +18,8 @@ const config = {
     '<BUILTIN_MODULES>',
     '<THIRD_PARTY_MODULES>',
     '',
+    '^~/',
+    '',
     String.raw`^\.\.`,
     '',
     '^[.]',

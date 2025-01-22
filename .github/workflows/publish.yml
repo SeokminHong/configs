@@ -30,13 +30,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       # Bump version
       - name: Bump version
-        id: bump
-        shell: bash
-        # Set to the output of the step
-        run: |
-          # Set the new version
-          NEW_VERSION=$(npm version ${{ github.event.inputs.version }})
-          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
+        run: npm version ${{ github.event.inputs.version }}
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

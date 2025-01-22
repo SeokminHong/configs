@@ -136,6 +136,7 @@ export const tsOnlyRules = [
   '@typescript-eslint/no-meaningless-void-operator',
   '@typescript-eslint/no-misused-new',
   '@typescript-eslint/no-misused-promises',
+  '@typescript-eslint/no-misused-spread',
   '@typescript-eslint/no-mixed-enums',
   '@typescript-eslint/no-namespace',
   '@typescript-eslint/no-non-null-assertion',

@@ -1,4 +1,4 @@
-name: Publish Package to npmjs
+name: Publish
 on:
   workflow_dispatch:
     inputs:
@@ -30,10 +30,16 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       # Bump version
       - name: Bump version
-        run: npm version ${{ github.event.inputs.version }}
-      # Push changes to main branch
-      - name: Push changes
-        run: git push -u origin main
+        id: bump
+        shell: bash
+        # Set to the output of the step
+        run: |
+          # Set the new version
+          NEW_VERSION=$(npm version ${{ github.event.inputs.version }})
+          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Push changes to main branch
+      - name: Push changes
+        run: git push -u origin main

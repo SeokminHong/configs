@@ -1,6 +1,6 @@
 {
   "name": "@seokminhong/configs",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "type": "module",
   "description": "All-in-one ESLint, TypeScript, and Prettier configurations",
   "main": "index.js",

@@ -286,7 +286,6 @@ export const baseRules = [
   'no-shadow-restricted-names',
   'no-sparse-arrays',
   'no-template-curly-in-string',
-  'no-underscore-dangle',
   'no-unexpected-multiline',
   'no-unreachable-loop',
   'no-unsafe-finally',

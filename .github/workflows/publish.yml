@@ -30,10 +30,20 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       # Bump version
       - name: Bump version
-        run: npm version ${{ github.event.inputs.version }}
+        id: version
+        shell: bash
+        run: |
+          version=$(npm version ${{ github.event.inputs.version }})
+          echo "version=${version}" >> $GITHUB_OUTPUT
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Push changes to main branch
       - name: Push changes
         run: git push -u origin main --follow-tags
+      # Create a release
+      - uses: actions/checkout@v4
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}

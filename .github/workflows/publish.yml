@@ -36,4 +36,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Push changes to main branch
       - name: Push changes
-        run: git push -u origin main
+        run: git push -u origin main --follow-tags

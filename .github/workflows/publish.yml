@@ -30,14 +30,14 @@ jobs:
           git config --global commit.gpgSign true
           git config --global tag.gpgSign true
           git config --global user.signingkey ${{ secrets.GPG_KEY_ID }}
-      - name: make deploy keys
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      # - name: make deploy keys
+      #   env:
+      #     DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      #   run: |
+      #     mkdir -p ~/.ssh/
+      #     echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+      #     chmod 600 ~/.ssh/id_rsa
+      #     ssh-keyscan github.com >> ~/.ssh/known_hosts
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:

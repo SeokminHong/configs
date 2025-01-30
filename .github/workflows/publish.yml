@@ -54,9 +54,9 @@ jobs:
         run: |
           version=$(npm version ${{ github.event.inputs.version }} -m "Bump version to %s")
           echo "version=${version}" >> $GITHUB_OUTPUT
-      # Push changes to main branch.
+      # Push changes
       - name: Push changes
-        run: git push -u origin main --follow-tags ${{ github.event.inputs.dry-run && '--dry-run' || '' }}
+        run: git push -u origin --follow-tags ${{ github.event.inputs.dry-run && '--dry-run' || '' }}
       - run: npm publish --provenance --access public ${{ github.event.inputs.dry-run && '--dry-run' || '' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

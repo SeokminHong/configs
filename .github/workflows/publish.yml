@@ -35,12 +35,12 @@ jobs:
         run: |
           version=$(npm version ${{ github.event.inputs.version }} -m "Bump version to %s")
           echo "version=${version}" >> $GITHUB_OUTPUT
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Push changes to main branch
       - name: Push changes
         run: git push -u origin main --follow-tags
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Create a release
       - uses: actions/checkout@v4
       - name: Release

@@ -82,16 +82,25 @@ const reactJsOnlyRuleDefs = [
 ];
 
 /**
- * @typedef {{
- *   supportsConstantExport?: boolean
- * }} Options
+ * @typedef Options
+ * @type {Object}
+ *
+ * @property {boolean} [allowConstantExport]
+ * @property {boolean} [reactRouter]
+ * @property {boolean} [supportsConstantExport]
+ * Deprecated: Use `allowConstantExport` instead.
  */
+
 /**
  * @param {Options} options
  * @returns {import('../types').Extension}
  */
 export default function react(options = {}) {
-  const { supportsConstantExport = false } = options;
+  const {
+    supportsConstantExport = false,
+    allowConstantExport = supportsConstantExport,
+    reactRouter = false,
+  } = options;
 
   return (rulesOptions) => [
     {
@@ -115,12 +124,22 @@ export default function react(options = {}) {
     {
       rules: rules(
         [
-          supportsConstantExport
-            ? [
-                'react-refresh/only-export-components',
-                { allowConstantExport: true },
-              ]
-            : 'react-refresh/only-export-components',
+          [
+            'react-refresh/only-export-components',
+            reactRouter
+              ? {
+                  allowExportNames: [
+                    'meta',
+                    'links',
+                    'headers',
+                    'loader',
+                    'action',
+                    'handle',
+                  ],
+                  allowConstantExport: true,
+                }
+              : { allowConstantExport },
+          ],
         ],
         rulesOptions,
       ),

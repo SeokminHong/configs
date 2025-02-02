@@ -39,7 +39,7 @@ import rules from './utils/rules.js';
  * @property {(keyof import('globals'))[]} [envs]
  * Environments for ESLint. For React project, please use `['browser', 'node']`.
  * @property {import('./types').Extension[]} [extensions]
- * Extensions for specific codebase. Currently, `jsx` and `react` are supported.
+ * Extensions for specific codebase. Currently, `jsx`, `react`, `storybook` are supported.
  */
 
 const tsExtensions = ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'];

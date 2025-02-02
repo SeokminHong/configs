@@ -53,6 +53,7 @@ export default function storybookReact(options = {}) {
       config.push({
         files: ['.storybook/**/*', ...storybookFiles],
         rules: {
+          'react/function-component-definition': 'off',
           'react-refresh/only-export-components': 'off',
         },
       });

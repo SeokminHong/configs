@@ -4,6 +4,7 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import * as importPlugin from 'eslint-plugin-import-x';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -40,6 +41,8 @@ import rules from './utils/rules.js';
  * Environments for ESLint. For React project, please use `['browser', 'node']`.
  * @property {import('./types').Extension[]} [extensions]
  * Extensions for specific codebase. Currently, `jsx`, `react`, `storybook` are supported.
+ * @property {string[]} [ignores]
+ * Patterns to ignore. Default is `['node_modules', 'dist']`.
  */
 
 const tsExtensions = ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'];
@@ -60,6 +63,7 @@ export default function config(options = {}) {
     restrictedSyntaxes = [],
     envs = [],
     extensions = [],
+    ignores = ['node_modules', 'dist'],
   } = options;
 
   const rulesOptions = {
@@ -68,6 +72,7 @@ export default function config(options = {}) {
   };
 
   return tseslint.config(
+    globalIgnores(ignores),
     {
       languageOptions: {
         parser: typescriptParser,

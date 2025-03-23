@@ -35,6 +35,7 @@ export default function storybookReact(options = {}) {
             'storybook/default-exports',
             'storybook/hierarchy-separator',
             'storybook/no-redundant-story-name',
+            'storybook/no-renderer-packages',
             'storybook/prefer-pascal-case',
             'storybook/story-exports',
             'storybook/use-storybook-expect',

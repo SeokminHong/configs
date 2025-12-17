@@ -13,7 +13,7 @@ const config = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
-  plugins: [import.meta.resolve('./prettier-plugins/sort-imports.js')],
+  plugins: ['./prettier-plugins/sort-imports.js'],
   importOrder: [
     '<BUILTIN_MODULES>',
     '<THIRD_PARTY_MODULES>',

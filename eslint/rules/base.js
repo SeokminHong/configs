@@ -45,7 +45,6 @@ const extendedRules = [
     { allow: ['arrowFunctions', 'constructors', 'decoratedFunctions'] },
   ],
   'no-loop-func',
-  'no-loss-of-precision',
   [
     'no-shadow',
     {
@@ -54,6 +53,7 @@ const extendedRules = [
     },
   ],
   'no-unused-expressions',
+  'no-unused-private-class-members',
 ];
 
 /**
@@ -153,8 +153,14 @@ export const tsOnlyRules = [
   '@typescript-eslint/no-unnecessary-qualifier',
   '@typescript-eslint/no-unnecessary-template-expression',
   '@typescript-eslint/no-unnecessary-type-arguments',
-  '@typescript-eslint/no-unnecessary-type-assertion',
+  [
+    '@typescript-eslint/no-unnecessary-type-assertion',
+    {
+      checkLiteralConstAssertions: true,
+    },
+  ],
   '@typescript-eslint/no-unnecessary-type-constraint',
+  '@typescript-eslint/no-unnecessary-type-conversion',
   '@typescript-eslint/no-unsafe-argument',
   '@typescript-eslint/no-unsafe-assignment',
   '@typescript-eslint/no-unsafe-call',
@@ -162,6 +168,7 @@ export const tsOnlyRules = [
   '@typescript-eslint/no-unsafe-enum-comparison',
   '@typescript-eslint/no-unsafe-member-access',
   '@typescript-eslint/no-unsafe-return',
+  '@typescript-eslint/no-useless-default-assignment',
   '@typescript-eslint/no-useless-empty-export',
   [
     '@typescript-eslint/no-use-before-define',
@@ -263,6 +270,7 @@ export const baseRules = [
   'no-labels',
   'no-lone-blocks',
   'no-lonely-if',
+  'no-loss-of-precision',
   'no-misleading-character-class',
   'no-multi-str',
   'no-nested-ternary',
@@ -286,10 +294,10 @@ export const baseRules = [
   'no-shadow-restricted-names',
   'no-sparse-arrays',
   'no-template-curly-in-string',
+  'no-unassigned-vars',
   'no-unexpected-multiline',
   'no-unreachable-loop',
   'no-unsafe-finally',
-  'no-unused-private-class-members',
   'no-useless-assignment',
   'no-useless-backreference',
   'no-useless-call',
@@ -367,6 +375,7 @@ export const baseRules = [
   'unicorn/no-unnecessary-polyfills',
   'unicorn/no-unreadable-array-destructuring',
   'unicorn/no-unreadable-iife',
+  'unicorn/no-useless-collection-argument',
   'unicorn/no-useless-fallback-in-spread',
   'unicorn/no-useless-promise-resolve-reject',
   'unicorn/no-useless-spread',
@@ -388,9 +397,12 @@ export const baseRules = [
       },
     },
   ],
+  'unicorn/prefer-bigint-literals',
+  'unicorn/prefer-class-fields',
   'unicorn/prefer-date-now',
   'unicorn/prefer-default-parameters',
   'unicorn/prefer-export-from',
+  'unicorn/prefer-import-meta-properties',
   'unicorn/prefer-logical-operator-over-ternary',
   'unicorn/prefer-math-trunc',
   'unicorn/prefer-modern-math-apis',

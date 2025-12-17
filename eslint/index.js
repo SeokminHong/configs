@@ -1,10 +1,9 @@
 // @ts-check
-import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import typescriptParser from '@typescript-eslint/parser';
-import * as importPlugin from 'eslint-plugin-import-x';
+import { importX } from 'eslint-plugin-import-x';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 import {
   addTypeScriptPrefix,
@@ -73,17 +72,16 @@ export default function config(options = {}) {
     globalIgnores(ignores),
     {
       languageOptions: {
-        parser: typescriptParser,
+        parser: tseslint.parser,
         parserOptions,
         globals: Object.assign({}, ...envs.map((env) => globals[env])),
       },
       files: [...jsExtensions, ...tsExtensions],
       plugins: {
-        // @ts-ignore
-        '@typescript-eslint': typescriptPlugin,
+        '@typescript-eslint': tseslint.plugin,
         unicorn: unicornPlugin,
         // @ts-ignore
-        'import-x': importPlugin,
+        'import-x': importX,
       },
       rules: rules(baseRules, rulesOptions),
       settings: {

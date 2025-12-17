@@ -41,8 +41,6 @@
   "license": "MIT",
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.7.0",
-    "@typescript-eslint/eslint-plugin": "8.50.0",
-    "@typescript-eslint/parser": "8.50.0",
     "eslint-plugin-import-x": "4.16.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.5",
@@ -54,7 +52,7 @@
     "typescript-eslint": "8.50.0"
   },
   "peerDependencies": {
-    "eslint": ">=9.39.2",
+    "eslint": ">=9.27.0",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   },

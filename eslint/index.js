@@ -11,7 +11,10 @@ import tseslint from 'typescript-eslint';
 import {
   addTypeScriptPrefix,
   baseRules,
+  extendedRules,
   extendedTypedRules,
+  jsExtendedRules,
+  jsExtendedTypedRules,
   jsOnlyRules,
   tsOnlyRules,
 } from './rules/base.js';
@@ -118,13 +121,15 @@ export default function config(options = {}) {
       files: jsExtensions,
       rules: {
         ...rules(
-          extendedTypedRules.map((ruleDef) => addTypeScriptPrefix(ruleDef)),
+          [...extendedTypedRules, ...extendedRules].map((ruleDef) =>
+            addTypeScriptPrefix(ruleDef),
+          ),
           {
             ...rulesOptions,
             level: 'off',
           },
         ),
-        ...rules(extendedTypedRules, rulesOptions),
+        ...rules([...jsExtendedTypedRules, ...jsExtendedRules], rulesOptions),
         ...rules(jsOnlyRules, rulesOptions),
       },
     },

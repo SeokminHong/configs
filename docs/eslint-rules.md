@@ -12,7 +12,6 @@ Enabled rules are intentionally excluded from this document because the source c
   - [Agreed adoption candidates pending implementation](#agreed-adoption-candidates-pending-implementation)
   - [Formatter, TypeScript config, or import-x already owns the concern](#formatter-typescript-config-or-import-x-already-owns-the-concern)
   - [Prettier or import sorter owns the formatting concern](#prettier-or-import-sorter-owns-the-formatting-concern)
-  - [TypeScript ESLint supersedes the core ESLint rule](#typescript-eslint-supersedes-the-core-eslint-rule)
   - [TypeScript/compiler or the TS-specific replacement already owns the diagnostic](#typescriptcompiler-or-the-ts-specific-replacement-already-owns-the-diagnostic)
   - [TypeScript, modern React runtime, or React 19 model makes this low-value](#typescript-modern-react-runtime-or-react-19-model-makes-this-low-value)
   - [Modern module or TypeScript runtime makes this low-value](#modern-module-or-typescript-runtime-makes-this-low-value)
@@ -44,12 +43,12 @@ Enabled rules are intentionally excluded from this document because the source c
 
 | Source       | Unused |
 | ------------ | -----: |
-| core         |     54 |
-| typescript   |     24 |
+| core         |     49 |
+| typescript   |     25 |
 | importX      |     28 |
-| unicorn      |     66 |
+| unicorn      |     67 |
 | jsxA11y      |      2 |
-| react        |     65 |
+| react        |     66 |
 | reactHooks   |     15 |
 | reactRefresh |      0 |
 | storybook    |      5 |
@@ -82,20 +81,15 @@ Enabled rules are intentionally excluded from this document because the source c
 
 ### Prettier or import sorter owns the formatting concern
 
-- Rules: [`react/jsx-closing-bracket-location`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-bracket-location.md), [`react/jsx-closing-tag-location`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-tag-location.md), [`react/jsx-curly-newline`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-newline.md), [`react/jsx-curly-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-spacing.md), [`react/jsx-equals-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-equals-spacing.md), [`react/jsx-indent`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent.md), [`react/jsx-indent-props`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent-props.md), [`react/jsx-max-props-per-line`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-props-per-line.md), [`react/jsx-newline`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-newline.md), [`react/jsx-one-expression-per-line`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-one-expression-per-line.md), [`react/jsx-props-no-multi-spaces`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-multi-spaces.md), [`react/jsx-tag-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-tag-spacing.md), [`react/jsx-wrap-multilines`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-wrap-multilines.md), [`unicorn/empty-brace-spaces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/empty-brace-spaces.md), [`unicorn/no-console-spaces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/no-console-spaces.md), [`unicorn/template-indent`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/template-indent.md).
+- Rules: [`react/jsx-child-element-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-child-element-spacing.md), [`react/jsx-closing-bracket-location`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-bracket-location.md), [`react/jsx-closing-tag-location`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-tag-location.md), [`react/jsx-curly-newline`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-newline.md), [`react/jsx-curly-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-spacing.md), [`react/jsx-equals-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-equals-spacing.md), [`react/jsx-indent`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent.md), [`react/jsx-indent-props`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent-props.md), [`react/jsx-max-props-per-line`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-props-per-line.md), [`react/jsx-newline`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-newline.md), [`react/jsx-one-expression-per-line`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-one-expression-per-line.md), [`react/jsx-props-no-multi-spaces`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-multi-spaces.md), [`react/jsx-tag-spacing`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-tag-spacing.md), [`react/jsx-wrap-multilines`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-wrap-multilines.md), [`unicorn/empty-brace-spaces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/empty-brace-spaces.md), [`unicorn/no-console-spaces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/no-console-spaces.md), [`unicorn/number-literal-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/number-literal-case.md), [`unicorn/template-indent`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/template-indent.md).
   Reason: Pure layout and whitespace rules stay disabled because Prettier owns formatting.
 - Rules: [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports), [`sort-keys`](https://eslint.org/docs/latest/rules/sort-keys), [`sort-vars`](https://eslint.org/docs/latest/rules/sort-vars), [`react/jsx-sort-props`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-sort-props.md), [`react/sort-comp`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-comp.md), [`react/sort-default-props`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-default-props.md), [`react/sort-prop-types`](https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-prop-types.md), [`unicorn/no-array-sort`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v64.0.0/docs/rules/no-array-sort.md).
   Reason: Sorting-only rules are style policy. Import sorting is already formatter-owned; other sorting preferences should not be shared defaults.
 
-### TypeScript ESLint supersedes the core ESLint rule
-
-- Rules: [`class-methods-use-this`](https://eslint.org/docs/latest/rules/class-methods-use-this), [`default-param-last`](https://eslint.org/docs/latest/rules/default-param-last), [`no-loop-func`](https://eslint.org/docs/latest/rules/no-loop-func), [`no-shadow`](https://eslint.org/docs/latest/rules/no-shadow), [`no-unused-private-class-members`](https://eslint.org/docs/latest/rules/no-unused-private-class-members).
-  Reason: Do not load the core rule in TypeScript code when the TypeScript ESLint extension is the intended implementation.
-
 ### TypeScript/compiler or the TS-specific replacement already owns the diagnostic
 
-- Rules: [`@typescript-eslint/no-dupe-class-members`](https://typescript-eslint.io/rules/no-dupe-class-members), [`@typescript-eslint/no-invalid-this`](https://typescript-eslint.io/rules/no-invalid-this), [`@typescript-eslint/no-redeclare`](https://typescript-eslint.io/rules/no-redeclare).
-  Reason: Leave disabled because TypeScript or the current rule-extension setup already reports the same class/member/name errors with better type awareness.
+- Rules: [`@typescript-eslint/no-dupe-class-members`](https://typescript-eslint.io/rules/no-dupe-class-members), [`@typescript-eslint/no-invalid-this`](https://typescript-eslint.io/rules/no-invalid-this), [`@typescript-eslint/no-redeclare`](https://typescript-eslint.io/rules/no-redeclare), [`@typescript-eslint/no-unused-vars`](https://typescript-eslint.io/rules/no-unused-vars).
+  Reason: Leave disabled because TypeScript, `tsconfig` (`noUnusedLocals`/`noUnusedParameters`), or the current rule-extension setup already reports the same class/member/name/unused-symbol errors with better type awareness.
 - Rules: [`no-undef-init`](https://eslint.org/docs/latest/rules/no-undef-init), [`no-undefined`](https://eslint.org/docs/latest/rules/no-undefined).
   Reason: Leave disabled because TypeScript already models `undefined`; these rules mostly add noise in typed code.
 

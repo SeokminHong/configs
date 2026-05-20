@@ -1,5 +1,23 @@
 # Configs
 
+## ESLint policy
+
+This package provides strict ESLint configs while avoiding rules that are
+better owned by TypeScript, Prettier, or another dedicated tool.
+
+- ESLint rules should catch correctness, safety, accessibility, React runtime,
+  import, and maintainability issues that TypeScript or Prettier do not already
+  report clearly.
+- TypeScript-owned diagnostics are not duplicated in ESLint unless the ESLint
+  rule gives materially better project-level feedback.
+- Formatting and code-shape preferences that are already handled by Prettier are
+  not enforced by ESLint.
+- Opinionated rules may be disabled when the project deliberately allows the
+  pattern. The reason must be documented in `docs/eslint-rules.md`.
+- Example projects under `examples/` are verification fixtures for this package.
+  They should stay minimal, reproducible, and excluded from the published
+  package.
+
 ## How to use
 
 ### 1. Install the package
@@ -28,7 +46,7 @@ import react from '@seokminhong/configs/eslint/react';
 
 export default config({
   envs: ['browser', 'node'],
-  extensions: [react()],
+  extensions: [react({ allowConstantExport: true })],
 });
 ```
 

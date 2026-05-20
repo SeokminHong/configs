@@ -35,9 +35,10 @@ const reactCommonRuleDefs = [
       allowDestructuredState: true,
     },
   ],
+  'react/jsx-no-comment-textnodes',
+  'react/jsx-uses-vars',
   'react/iframe-missing-sandbox',
   ['react/jsx-boolean-value', 'never'],
-  'react/jsx-child-element-spacing',
   'react/jsx-curly-brace-presence',
   [
     'react/jsx-filename-extension',
@@ -62,15 +63,30 @@ const reactCommonRuleDefs = [
   'react/jsx-pascal-case',
   'react/no-children-prop',
   'react/no-danger-with-children',
+  'react/no-deprecated',
+  'react/no-direct-mutation-state',
+  'react/no-find-dom-node',
   'react/no-object-type-as-default-prop',
   'react/no-render-return-value',
   'react/no-string-refs',
+  'react/no-unsafe',
   'react/no-unescaped-entities',
   'react/no-unstable-nested-components',
   'react/void-dom-elements-no-children',
 
+  'react-hooks/error-boundaries',
+  'react-hooks/immutability',
+  'react-hooks/preserve-manual-memoization',
+  'react-hooks/purity',
+  'react-hooks/refs',
   'react-hooks/rules-of-hooks',
   'react-hooks/exhaustive-deps',
+  'react-hooks/set-state-in-effect',
+  'react-hooks/set-state-in-render',
+  'react-hooks/static-components',
+  'react-hooks/unsupported-syntax',
+  'react-hooks/use-memo',
+  'react-hooks/void-use-memo',
 ];
 
 /**
@@ -78,6 +94,7 @@ const reactCommonRuleDefs = [
  */
 const reactJsOnlyRuleDefs = [
   'react/jsx-no-duplicate-props',
+  'react/jsx-no-undef',
   'react/no-unknown-property',
 ];
 

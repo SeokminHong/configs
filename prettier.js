@@ -13,8 +13,20 @@ const config = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
-  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+  plugins: ['./prettier-plugins/sort-imports.js'],
   importOrder: [
+    '<TYPES>^(node:)',
+    '<TYPES>^(?![./]|~/|/)',
+    '',
+    '<TYPES>^~/',
+    '',
+    String.raw`<TYPES>^\.\.`,
+    '',
+    '<TYPES>^[.]',
+    '',
+    // Public asset types
+    '<TYPES>^/',
+    '',
     '<BUILTIN_MODULES>',
     '<THIRD_PARTY_MODULES>',
     '',
@@ -27,6 +39,7 @@ const config = {
     // Public assets
     '^/',
   ],
+  importOrderTypeScriptVersion: '5.9.3',
 };
 
 export default config;

@@ -14,6 +14,13 @@ better owned by TypeScript, Prettier, or another dedicated tool.
   not enforced by ESLint.
 - Opinionated rules may be disabled when the project deliberately allows the
   pattern. The reason must be documented in `docs/eslint-rules.md`.
+- Presets are the preferred public interface for common project shapes. They
+  may bundle environments, extensions, ignored rules, and performance policy.
+  Lower-level extensions remain available when a project needs manual
+  composition.
+- Expensive rules are classified separately. They stay enabled by default, but
+  projects may use the `local` performance profile to disable them locally and
+  keep them enabled in CI.
 - Example projects under `examples/` are verification fixtures for this package.
   They should stay minimal, reproducible, and excluded from the published
   package.
@@ -38,6 +45,19 @@ export default config();
 ```
 
 #### ESLint (React)
+
+```js
+// eslint.config.js
+import config from '@seokminhong/configs/eslint';
+import { react } from '@seokminhong/configs/eslint/presets';
+
+export default config({
+  presets: [react({ allowConstantExport: true })],
+  performance: process.env.CI ? 'ci' : 'local',
+});
+```
+
+#### ESLint (manual extension composition)
 
 ```js
 // eslint.config.js

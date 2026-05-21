@@ -10,6 +10,12 @@ The audit resolved the flat config with the base config plus the React and
 Storybook extensions, then checked representative files for each supported
 surface.
 
+The default performance profile is `ci`, which keeps the full active rule set
+enabled. The `local` profile disables the classified expensive rules and turns
+off TypeScript project service by default so editor and local lint runs can
+avoid type-aware rule cost. Projects can select the profile explicitly, usually
+with `performance: process.env.CI ? 'ci' : 'local'`.
+
 | Surface          | Representative file    | Active rules |
 | ---------------- | ---------------------- | -----------: |
 | TypeScript       | `src/file.ts`          |          374 |

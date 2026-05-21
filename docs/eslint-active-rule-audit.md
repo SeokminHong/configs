@@ -52,6 +52,10 @@ Across all audited surfaces, 443 unique rule IDs are active:
 
 ## Checks
 
+- The Vitest active-rule test suite in `tests/eslint-active-rules.test.js` is the
+  executable form of this audit. It resolves the flat config for every supported
+  surface and checks each active rule against plugin metadata, TypeScript/core
+  overlap policy, Prettier ownership, and the `full`/`light` performance split.
 - Deprecated active rules: none.
 - Same-file core and `@typescript-eslint` extension duplicates: none.
 - Active rules disabled by `eslint-config-prettier@10.1.8`: none.

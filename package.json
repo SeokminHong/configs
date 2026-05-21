@@ -72,7 +72,12 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
-    "eslint": "10.4.0"
+    "eslint": "10.4.0",
+    "eslint-config-prettier": "10.1.8",
+    "vitest": "4.1.7"
+  },
+  "scripts": {
+    "test": "vitest run tests"
   },
   "packageManager": "pnpm@9.15.3"
 }

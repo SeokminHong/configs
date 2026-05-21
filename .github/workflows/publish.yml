@@ -7,6 +7,7 @@ on:
         required: true
         type: choice
         options:
+          - 'current'
           - 'patch'
           - 'minor'
           - 'major'
@@ -24,6 +25,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup git config
         run: |
           git config --global user.email "ghdtjrald240@gmail.com"
@@ -43,8 +46,17 @@ jobs:
       - name: Bump version
         id: version
         shell: bash
+        env:
+          VERSION_INPUT: ${{ github.event.inputs.version }}
         run: |
-          version=$(npm version ${{ github.event.inputs.version }} -m "Bump version to %s")
+          if [[ "$VERSION_INPUT" == "current" ]]; then
+            version="v$(node -p "require('./package.json').version")"
+            if ! git rev-parse --verify --quiet "refs/tags/${version}" >/dev/null; then
+              git tag -a "$version" -m "Bump version to ${version#v}"
+            fi
+          else
+            version=$(npm version "$VERSION_INPUT" -m "Bump version to %s")
+          fi
           echo "version=${version}" >> $GITHUB_OUTPUT
       # Push changes
       - name: Push changes

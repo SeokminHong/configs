@@ -46,6 +46,9 @@ export default function storybookReact(options = {}) {
       },
       {
         files: ['.storybook/main.@(js|cjs|mjs|ts)'],
+        plugins: {
+          storybook: storybookPlugin,
+        },
         rules: rules(['storybook/no-uninstalled-addons'], rulesOptions),
       },
     ];

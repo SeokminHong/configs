@@ -38,9 +38,11 @@ Across all audited surfaces, 443 unique rule IDs are active:
 - Deprecated active rules: none.
 - Same-file core and `@typescript-eslint` extension duplicates: none.
 - Active rules disabled by `eslint-config-prettier@10.1.8`: none.
-- `no-unexpected-multiline` remains enabled. `eslint-config-prettier` marks it
-  as a special rule that cannot be automatically checked, so it was reviewed
-  separately and kept as an ASI correctness guard rather than a formatting rule.
+- `curly` and `no-unexpected-multiline` remain enabled.
+  `eslint-config-prettier` marks them as special rules that require separate
+  review. `curly` is kept with the default `all` behavior, which does not fight
+  Prettier's formatting decisions, and `no-unexpected-multiline` is kept as an
+  ASI correctness guard rather than a formatting rule.
 - Type import style is split across tools intentionally: Prettier groups and
   separates type imports, while
   [`import-x/consistent-type-specifier-style`](https://github.com/un-ts/eslint-plugin-import-x/blob/v4.16.2/docs/rules/consistent-type-specifier-style.md)

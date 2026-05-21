@@ -8,6 +8,7 @@ import tseslint from 'typescript-eslint';
 import {
   addTypeScriptPrefix,
   baseRules,
+  expensiveRules,
   extendedRules,
   extendedTypedRules,
   jsExtendedRules,
@@ -17,6 +18,8 @@ import {
 } from './rules/base.js';
 import rules from './utils/rules.js';
 
+export { expensiveRules } from './rules/base.js';
+
 /**
  * @typedef Options
  * @type {Object}
@@ -24,8 +27,12 @@ import rules from './utils/rules.js';
  * Level of severity. Default is `'error'`.
  * @property {import('./types').ParserOptions} [parserOptions]
  * `parserOptions` property for TypeScript ESLint plugin options. See {@link https://typescript-eslint.io/getting-started/typed-linting | TypeScript ESLint document}.
+ * @property {import('./types').Preset[]} [presets]
+ * Presets for common project shapes. Presets can provide environments, extensions, ignored rules, and performance policy.
+ * @property {import('./types').PerformanceProfile} [performance]
+ * Rule performance profile. Default is `'ci'`, which keeps all rules enabled. Use `'local'` to disable classified expensive rules.
  * @property {string[]} [ignoredRules]
- * Rules to ignore. It's useful if you want to disable specific rules by environment because of performance.
+ * Rules to ignore. These are merged with preset ignored rules and profile-specific ignored rules.
  * @property {import('./types').RestrictSyntax[]} [restrictedSyntaxes]
  * Options for {@link https://eslint.org/docs/latest/rules/no-restricted-syntax | no-restricted-syntax} option.
  * This config uses the rule for reporting `export * from '...'` syntax.
@@ -49,22 +56,120 @@ const tsExtensions = ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'];
 
 const jsExtensions = ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'];
 
+/** @type {Required<Pick<Options, 'level' | 'performance' | 'ignores'>>} */
+const defaultOptions = {
+  level: 'error',
+  performance: 'ci',
+  ignores: ['node_modules', 'dist'],
+};
+
+/**
+ * @template T
+ * @param {T[]} values
+ * @returns {T[]}
+ */
+function unique(values) {
+  return [...new Set(values)];
+}
+
+/**
+ * @param {import('./types').PerformanceProfile} performance
+ * @returns {import('./types').ParserOptions}
+ */
+function defaultParserOptions(performance) {
+  return {
+    projectService: performance !== 'local',
+    tsconfigRootDir: import.meta.dirname,
+  };
+}
+
+/**
+ * @param {import('./types').Preset[]} presets
+ * @returns {Omit<Options, 'presets'>}
+ */
+function mergePresets(presets) {
+  return presets.reduce(
+    (merged, preset) => ({
+      level: preset.level ?? merged.level,
+      parserOptions: {
+        ...merged.parserOptions,
+        ...preset.parserOptions,
+      },
+      ignoredRules: [...merged.ignoredRules, ...(preset.ignoredRules ?? [])],
+      restrictedSyntaxes: [
+        ...merged.restrictedSyntaxes,
+        ...(preset.restrictedSyntaxes ?? []),
+      ],
+      envs: [...merged.envs, ...(preset.envs ?? [])],
+      extensions: [...merged.extensions, ...(preset.extensions ?? [])],
+      ignores: [...merged.ignores, ...(preset.ignores ?? [])],
+      performance: preset.performance ?? merged.performance,
+    }),
+    {
+      ignoredRules: [],
+      restrictedSyntaxes: [],
+      envs: [],
+      extensions: [],
+      ignores: [],
+    },
+  );
+}
+
+/**
+ * @param {Options} options
+ */
+function resolveOptions(options) {
+  const presetOptions = mergePresets(options.presets ?? []);
+  const performance =
+    options.performance ??
+    presetOptions.performance ??
+    defaultOptions.performance;
+
+  if (performance !== 'ci' && performance !== 'local') {
+    throw new TypeError(`Unknown ESLint performance profile: ${performance}`);
+  }
+
+  return {
+    level: options.level ?? presetOptions.level ?? defaultOptions.level,
+    parserOptions: {
+      ...defaultParserOptions(performance),
+      ...presetOptions.parserOptions,
+      ...options.parserOptions,
+    },
+    ignoredRules: unique([
+      ...(presetOptions.ignoredRules ?? []),
+      ...(options.ignoredRules ?? []),
+      ...(performance === 'local' ? expensiveRules : []),
+    ]),
+    restrictedSyntaxes: [
+      ...(presetOptions.restrictedSyntaxes ?? []),
+      ...(options.restrictedSyntaxes ?? []),
+    ],
+    envs: unique([...(presetOptions.envs ?? []), ...(options.envs ?? [])]),
+    extensions: [
+      ...(presetOptions.extensions ?? []),
+      ...(options.extensions ?? []),
+    ],
+    ignores:
+      options.ignores === undefined
+        ? unique([...defaultOptions.ignores, ...(presetOptions.ignores ?? [])])
+        : unique([...(presetOptions.ignores ?? []), ...options.ignores]),
+  };
+}
+
 /**
  * @param {Options} options
  */
 export default function config(options = {}) {
   const {
-    level = 'error',
-    parserOptions = {
-      projectService: true,
-      tsconfigRootDir: import.meta.dirname,
-    },
-    ignoredRules = [],
-    restrictedSyntaxes = [],
-    envs = [],
-    extensions = [],
-    ignores = ['node_modules', 'dist'],
-  } = options;
+    level,
+    parserOptions,
+    ignoredRules,
+    restrictedSyntaxes,
+    envs,
+    extensions,
+    ignores,
+  } = resolveOptions(options);
 
   const rulesOptions = {
     level,

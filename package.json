@@ -8,6 +8,9 @@
     "./eslint": {
       "default": "./eslint/index.js"
     },
+    "./eslint/presets": {
+      "default": "./eslint/presets/index.js"
+    },
     "./eslint/*": {
       "default": "./eslint/extensions/*.js"
     },

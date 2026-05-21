@@ -51,11 +51,26 @@ export default config();
 import config from '@seokminhong/configs/eslint';
 import { react } from '@seokminhong/configs/eslint/presets';
 
+const mode = process.env.CI ? 'full' : 'light';
+
 export default config({
-  presets: [react({ allowConstantExport: true })],
-  performance: process.env.CI ? 'ci' : 'local',
+  presets: [react({ allowConstantExport: true, mode })],
 });
 ```
+
+Available presets are exported from `@seokminhong/configs/eslint/presets`:
+
+- `node()`: Node globals.
+- `browser()`: browser globals.
+- `jsx()`: browser globals and JSX a11y for non-React JSX runtimes such as
+  Qwik and Solid.
+- `react()`: browser globals, React, React Hooks, React Refresh, and JSX a11y.
+- `storybook()`: Storybook story and `.storybook/main` rules.
+
+Each preset accepts `mode: 'full' | 'light'`. `full` keeps the complete rule set
+enabled. `light` disables the exported `expensiveRules` group and turns off
+TypeScript project service by default. The lower-level `performance: 'ci' |
+'local'` option is still available directly on `config()`.
 
 #### ESLint (manual extension composition)
 

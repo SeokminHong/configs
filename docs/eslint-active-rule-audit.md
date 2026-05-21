@@ -14,7 +14,7 @@ The default performance profile is `ci`, which keeps the full active rule set
 enabled. The `local` profile disables the classified expensive rules and turns
 off TypeScript project service by default so editor and local lint runs can
 avoid type-aware rule cost. Projects can select the profile explicitly, usually
-with `performance: process.env.CI ? 'ci' : 'local'`.
+through preset modes such as `react({ mode: process.env.CI ? 'full' : 'light' })`.
 
 | Surface          | Representative file    | Active rules |
 | ---------------- | ---------------------- | -----------: |
@@ -24,6 +24,17 @@ with `performance: process.env.CI ? 'ci' : 'local'`.
 | JavaScript React | `src/file.jsx`         |          329 |
 | Storybook story  | `src/file.stories.tsx` |          382 |
 | Storybook main   | `.storybook/main.ts`   |          373 |
+
+With the `local` performance profile, the same surfaces resolve to:
+
+| Surface          | Representative file    | Active rules |
+| ---------------- | ---------------------- | -----------: |
+| TypeScript       | `src/file.ts`          |          321 |
+| TypeScript React | `src/file.tsx`         |          321 |
+| JavaScript       | `src/file.js`          |          324 |
+| JavaScript React | `src/file.jsx`         |          324 |
+| Storybook story  | `src/file.stories.tsx` |          329 |
+| Storybook main   | `.storybook/main.ts`   |          320 |
 
 Across all audited surfaces, 443 unique rule IDs are active:
 
@@ -54,6 +65,10 @@ Across all audited surfaces, 443 unique rule IDs are active:
   [`import-x/consistent-type-specifier-style`](https://github.com/un-ts/eslint-plugin-import-x/blob/v4.16.2/docs/rules/consistent-type-specifier-style.md)
   remains enabled because the Prettier import sorter does not convert every
   pure inline type specifier into `import type`.
+- `performance: 'local'` disables all exported `expensiveRules`. The current
+  list contains 53 type-aware `@typescript-eslint` rules and 5 resolver-heavy
+  JavaScript `import-x` rules. No classified expensive rule remains active in
+  the audited `local` profile surfaces.
 
 ## Resolved Overlaps
 

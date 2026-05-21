@@ -4,5 +4,6 @@
     {
       "pattern": "examples/*"
     }
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

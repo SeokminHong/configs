@@ -1,6 +1,6 @@
 {
   "name": "@seokminhong/configs",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "type": "module",
   "description": "All-in-one ESLint, TypeScript, and Prettier configurations",
   "main": "index.js",
@@ -54,7 +54,7 @@
   "peerDependencies": {
     "eslint": ">=9.27.0 <11",
     "prettier": "^3.8.3",
-    "typescript": ">=5.9.3 <6.1.0"
+    "typescript": ">=6.0.3 <6.1.0"
   },
   "peerDependenciesMeta": {
     "eslint": {

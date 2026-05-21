@@ -28,6 +28,8 @@ Enabled rules are intentionally excluded from this document because the source c
 
 - Date: 2026-05-21
 - ESLint: `10.4.0`
+- Prettier: `3.8.3`
+- TypeScript: `6.0.3`
 - TypeScript ESLint: `8.59.4`
 - Import plugin: `4.16.2`
 - Unicorn: `64.0.0`
